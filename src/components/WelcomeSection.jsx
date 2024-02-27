@@ -20,12 +20,12 @@ const WelcomeSection = () => {
       gap={4}
       p={2}
     >
-      <Typography variant="h5" sx={{ color: "white", height: "10px" }}>
+      <Typography variant="h5" sx={{ color: "white", height: "40px" }}>
         Welcome
       </Typography>
       <Typography
         variant="h3"
-        sx={{ color: "white", fontStyle: "bolder", height: "30px" }}
+        sx={{ color: "white", height: "70px",} }
       >
         AMIRA CONSULTANTS LLP.
       </Typography>
@@ -37,12 +37,13 @@ const WelcomeSection = () => {
           height: "auto",
           width: "450px",
           textAlign: "center",
+         
+         
         }}
       >
-        Established in 2014, AMIRA Consultants LLP has been known for an unparalleled commitment to customer satisfaction.
-As the technology evolves, we have focused on building and maintaining bots to streamline customer operation in accounts payable and purchasing specializing in maritime domains.
-It’s this standard of excellence that has provided the impetus for us to grow into the business we are today. For more information, reach out today
-        
+        Established in 2014, AMIRA Consultants LLP has been known for an
+        unparalleled commitment to customer satisfaction.For more information,
+        reach out today
       </Typography>
       <Box
         sx={{

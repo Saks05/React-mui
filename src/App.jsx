@@ -14,7 +14,9 @@ function App() {
         minHeight: "100vh",
         width: "100wh",
         display: "flex",
-        background: "#F2F3F5"
+        background: "#F2F3F5",
+        overflow:'hidden',
+         flexDirection:{xs:'column',md:"row"}
       }}
     >
      

@@ -9,14 +9,13 @@ OutlinedInput,
 TextField,
 Typography,
 } from "@mui/material";
-
+import { Player } from '@lottiefiles/react-lottie-player';
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Form, useFormik } from 'formik';
 import * as yup from 'yup';
 import Divider from '@mui/material/Divider';
-
-
+import Lottie from 'lottie-web';
 
 const Login = ({setShowLogin}) => {
 
@@ -45,6 +44,14 @@ const Login = ({setShowLogin}) => {
         alert(JSON.stringify(values, null, 2));
       },
     });
+    // const defaultOptions = {
+    //   loop: true,
+    //   autoplay: true, 
+    //   animationData:loginAnimation, // whaterve name u have given while importing
+    //   rendererSettings: {
+    //   preserveAspectRatio: 'xMidYMid slice'
+    //   }
+    // };
 
   return (
     <Box
@@ -59,9 +66,9 @@ const Login = ({setShowLogin}) => {
     }}
   >
     <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px", width:"400px"}}>
-      <Typography variant="h5" sx={{ color: "#181818", textAlign:"center" }}>
+      <Typography variant="h5" sx={{ color: "#181818", textAlign:"center",marginTop:"10px"}}fontWeight='fontWeightMedium'>
         Login
-        <Divider />
+       
       </Typography>
      
       <form onSubmit={formik.handleSubmit}>
@@ -104,6 +111,13 @@ const Login = ({setShowLogin}) => {
       </form>
       <Button variant="outlined" type='submit' width="20px" fullWidth sx={{marginTop:"10px"}} onClick={() => setShowLogin(false)} >SignUp</Button>
 
+    </Box>
+    <Box>
+            <Player src='https://lottie.host/a2e58f25-b96b-494e-a202-d11040089c4f/2tcec0mM35.json'
+              className='player'
+               loop
+              autoplay
+              style={{ height: '300px', width: '300px' }}/>
     </Box>
   </Box>
   )

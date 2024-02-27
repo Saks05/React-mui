@@ -16,7 +16,7 @@ import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Form, useFormik } from 'formik';
 import * as yup from 'yup';
-
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const SignupForm = ({ setShowLogin }) => {
 
@@ -66,9 +66,9 @@ const SignupForm = ({ setShowLogin }) => {
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column", rowGap: "10px", width: "400px" }}>
-        <Typography variant="h5" sx={{ color: "#181818", textAlign: "center" }}>
+        <Typography variant="h5" sx={{ color: "#181818", textAlign: "center" ,fontSize:"30px"}}fontWeight='fontWeightMedium'>
           SignUp
-          <Divider/>
+          
         </Typography>
         <form onSubmit={formik.handleSubmit}>
           <TextField label="FirstName" variant="outlined" id="firstName" fullWidth
@@ -128,8 +128,15 @@ const SignupForm = ({ setShowLogin }) => {
           <Button variant="contained" type='submit' width="20px" fullWidth sx={{ marginTop: "10px" }} >Submit</Button>
         </form>
         <Button variant="outlined" type='submit' width="20px" fullWidth sx={{ marginTop: "10px" }} onClick={() => setShowLogin(true)}>Login</Button>
-
+       
       </Box>
+      <Box>
+            <Player src='https://lottie.host/42146a2f-c4b9-4726-82e6-cc52d0a5b4ff/Mfuxy4F6VM.json'
+              className='player'
+               loop
+              autoplay
+              style={{ height: '200px', width: '500px' }}/>
+    </Box>
     </Box>
   )
 }
