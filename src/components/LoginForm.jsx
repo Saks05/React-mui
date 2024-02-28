@@ -20,7 +20,9 @@ import * as yup from "yup";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setShowLogin }) => {
+
+const Login = ({ props }) => {
+  const{setShowLogin}=props.setShowLogin
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
