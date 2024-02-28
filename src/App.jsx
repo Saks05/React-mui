@@ -1,28 +1,21 @@
 import { Box,} from "@mui/material";
-import { useState } from "react";
-import  LoginForm from "./components/LoginForm";
-import WelcomeSection from "./components/WelcomeSection";
-import SignupForm from "./components/SignupForm";
+// eslint-disable-next-line no-unused-vars
+import React from "react";
+import { CssBaseline } from "@mui/material";
+// eslint-disable-next-line no-unused-vars
+import Authenticate from "./pages/Authenticate";
+
+import { Outlet } from "react-router-dom";
+import Routes from "./Routes";
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
-
-  // const handleClickShowPassword = () => setShowPassword((show) => !show);
+  
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        width: "100wh",
-        display: "flex",
-        background: "#F2F3F5",
-        overflow:'hidden',
-         flexDirection:{xs:'column',md:"row"}
-      }}
-    >
-     
-      <WelcomeSection />
-      {showLogin ? <LoginForm setShowLogin={setShowLogin } /> : <SignupForm setShowLogin={setShowLogin } /> }
-      
+    <Box>
+      <CssBaseline/>
+      {/* <Authenticate/> */}
+      <Routes/>
+      <Outlet/>
     </Box>
   );
 }
