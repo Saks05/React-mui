@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Box,
   Button,
-  Divider,
   FormControl,
   IconButton,
   InputAdornment,
@@ -14,7 +13,7 @@ import {
 
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Form, useFormik } from 'formik';
+import {  useFormik } from 'formik';
 import * as yup from 'yup';
 import { Player } from '@lottiefiles/react-lottie-player';
 

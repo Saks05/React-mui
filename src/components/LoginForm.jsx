@@ -19,6 +19,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Login = ({ setShowLogin }) => {
   const [showPassword, setShowPassword] = useState(false);

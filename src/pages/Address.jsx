@@ -3,6 +3,7 @@ import { Margin } from "@mui/icons-material";
 import {
   Box,
   Button,
+  Grid,
   Modal,
   Paper,
   Table,
@@ -14,6 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
+import AddressForm from "../components/AddressForm";
 
 const dummyData = [
   {
@@ -99,25 +101,37 @@ const dummyData = [
 ];
 const Address = () => {
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 570,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    height: 530,
   };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
-    <Box sx={{ height: "100%", width: "100%" ,marginTop:"10px"}}>
-      
-      <Box sx={{display:"flex",justifyContent:"space-between",marginTop:"10px"}}><Typography variant="h5">Address</Typography><Button variant="contained">Add New Address</Button></Box>
+    <Box sx={{ height: "100%", width: "100%", marginTop: "10px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "10px",
+        }}
+      >
+        <Typography variant="h5">Address</Typography>
+        <Button variant="contained" onClick={handleOpen}>
+          Add New Address
+        </Button>
+      </Box>
       <Box>
-        <TableContainer component={Paper} sx={{marginTop:"15px"}}>
+        <TableContainer component={Paper} sx={{ marginTop: "15px" }}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
@@ -136,14 +150,15 @@ const Address = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                  <Button variant="text">{row.address_code}</Button>
+                    <Button variant="text" onClick={handleOpen}>
+                      {row.address_code}
+                    </Button>
                   </TableCell>
                   <TableCell align="right">{row.name}</TableCell>
                   <TableCell align="right">{row.address_1}</TableCell>
                   <TableCell align="right">{row.city}</TableCell>
                   <TableCell align="right">{row.country}</TableCell>
                   <TableCell align="right">{row.email}</TableCell>
-
                 </TableRow>
               ))}
             </TableBody>
@@ -151,21 +166,16 @@ const Address = () => {
         </TableContainer>
       </Box>
       <Box>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <AddressForm />
+          </Box>
+        </Modal>
       </Box>
     </Box>
   );
