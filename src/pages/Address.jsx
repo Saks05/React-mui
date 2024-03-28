@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { Margin } from "@mui/icons-material";
+import { Margin, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
   Button,
+  FormControl,
   Grid,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
   Modal,
+  OutlinedInput,
   Paper,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -16,7 +22,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import AddressForm from "../components/AddressForm";
-
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 const dummyData = [
   {
     address_code: "abc",
@@ -100,6 +106,7 @@ const dummyData = [
   },
 ];
 const Address = () => {
+  
   const style = {
     position: "absolute",
     top: "50%",
@@ -110,11 +117,16 @@ const Address = () => {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
-    height: 530,
+    
   };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [formType,setFormType] = useState("");
+  const [selectedItem,setSelectedItem] = useState({})
+  const [country,setCountry]=useState("india")
+  console.log(selectedItem,"yeh selected Item h")
+  
 
   return (
     <Box sx={{ height: "100%", width: "100%", marginTop: "10px" }}>
@@ -126,10 +138,55 @@ const Address = () => {
         }}
       >
         <Typography variant="h5">Address</Typography>
-        <Button variant="contained" onClick={handleOpen}>
-          Add New Address
+        <Button variant="contained" onClick={()=>{handleOpen();setFormType("new")}} >
+          Add New Address 
+         
         </Button>
       </Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={8} md={8}>
+          <Box sx={{marginTop:"12px"}}> 
+          <FormControl variant="outlined" fullWidth>
+          <InputLabel htmlFor="outlined-adornment-search">Search Address Code, Name</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-search"
+            type='text' 
+           
+            endAdornment={
+              <InputAdornment position="end">
+                
+           <icon/>
+              </InputAdornment>
+            }
+            label="Search Address Code, Name"
+          />
+        </FormControl>
+          </Box>
+        </Grid>
+        <Grid item xs={12} sm={4} md={4}>
+          
+        <Box sx={{marginTop:"12px"}} > 
+        <FormControl fullWidth>
+  <InputLabel id="demo-simple-select-label">Country</InputLabel>
+  <Select
+    labelId="demo-simple-select-label"
+    id="demo-simple-select"
+    value={country}
+    label="Country"
+    onChange={(e)=>{setCountry(e.target.value)}}
+  >
+    <MenuItem value={"India"}>India</MenuItem>
+    {/* <MenuItem value={"USA"}>USA</MenuItem> */}
+  </Select>
+</FormControl>
+        </Box>
+          
+        </Grid>
+        </Grid>
+        
+        
+       
+      
       <Box>
         <TableContainer component={Paper} sx={{ marginTop: "15px" }}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -150,7 +207,7 @@ const Address = () => {
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    <Button variant="text" onClick={handleOpen}>
+                    <Button variant="text" onClick={()=>{handleOpen();setFormType("update");setSelectedItem(row); console.log(row,"yeh row h")}}>
                       {row.address_code}
                     </Button>
                   </TableCell>
@@ -169,11 +226,12 @@ const Address = () => {
         <Modal
           open={open}
           onClose={handleClose}
+          
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            <AddressForm />
+            <AddressForm onClose={handleClose} formType={formType} selectedItem={selectedItem}/>
           </Box>
         </Modal>
       </Box>
