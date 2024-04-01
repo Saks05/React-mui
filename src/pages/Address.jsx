@@ -17,94 +17,16 @@ import {
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddressForm from "../components/AddressForm";
 import ManageSearchIcon from '@mui/icons-material/ManageSearch';
-const dummyData = [
-  {
-    address_code: "abc",
-    name: "Sakshi",
-    address_1: "123,West",
-    city: "Pune",
-    country: "India",
-    email: "soni@mail.com",
-  },
-  {
-    address_code: "bcd",
-    name: "Guddu",
-    address_1: "123,East",
-    city: "Nashik",
-    country: "India",
-    email: "p@mail.com",
-  },
-  {
-    address_code: "def",
-    name: "Guddi",
-    address_1: "123,North",
-    city: "Bhusawal",
-    country: "India",
-    email: "guddi@mail.com",
-  },
-  {
-    address_code: "efg",
-    name: "Gaurav",
-    address_1: "123,South",
-    city: "Bihar",
-    country: "India",
-    email: "gaurav@mail.com",
-  },
-  {
-    address_code: "ghi",
-    name: "Ashwini",
-    address_1: "123,NorthEast",
-    city: "Gondia",
-    country: "India",
-    email: "ash@mail.com",
-  },
-  {
-    address_code: "ijk",
-    name: "Sneha",
-    address_1: "123,NorthWest",
-    city: "Nashik",
-    country: "India",
-    email: "sneha@mail.com",
-  },
-  {
-    address_code: "klm",
-    name: "Aastha",
-    address_1: "123,SouthEast",
-    city: "Indore",
-    country: "India",
-    email: "aastha@mail.com",
-  },
-  {
-    address_code: "mno",
-    name: "Kalpita",
-    address_1: "234,North",
-    city: "Goa",
-    country: "India",
-    email: "kalpita@mail.com",
-  },
-  {
-    address_code: "opq",
-    name: "Ravi",
-    address_1: "234,East",
-    city: "Solapur",
-    country: "India",
-    email: "ravi@mail.com",
-  },
-  {
-    address_code: "qrs",
-    name: "Pradyumann",
-    address_1: "234,West",
-    city: "Nashik",
-    country: "India",
-    email: "prady@mail.com",
-  },
-];
+import dummyData from "../constants/JSONFILE1.json";
+
+
 const Address = () => {
   
   const style = {
@@ -125,8 +47,45 @@ const Address = () => {
   const [formType,setFormType] = useState("");
   const [selectedItem,setSelectedItem] = useState({})
   const [country,setCountry]=useState("india")
-  console.log(selectedItem,"yeh selected Item h")
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+  const handleSearch = (value) => {
+    console.log("ye tera parameter hai bhai", value);
+    if (value !== "") {
+        const newArray = dummyData.filter((item) => (
+            item.address_code.toLowerCase().includes(value.toLowerCase()) || 
+            item.name.toLowerCase().includes(value.toLowerCase())
+        ));
+        if (newArray.length > 0) { // Changed newArray.length > 1 to newArray.length > 0
+            console.log("newArray ko handleSearch me console kiya h",setFilterData(newArray));
+        }
+    } else {
+        setPage(1);
+    }
+}
+
+  const [filteredData,setFilterData]= useState([]);
+  useEffect(()=>{
+
+    console.log("og array", dummyData) ;
+    // const newArray=[...dummyData];
+    const newArray= dummyData.slice(page*rowsPerPage, page*rowsPerPage + rowsPerPage,);
+    
+    console.log("set filter ", setFilterData(newArray)) ;
+    
+    console.log ("start", page * rowsPerPage)
+    console.log ("end ",  page * rowsPerPage + rowsPerPage)
+    }, [ page, rowsPerPage] )
   
+
 
   return (
     <Box sx={{ height: "100%", width: "100%", marginTop: "10px" }}>
@@ -145,17 +104,17 @@ const Address = () => {
       </Box>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={8} md={8}>
-          <Box sx={{marginTop:"12px"}}> 
+          <Box sx={{marginTop:"12px"}}>
           <FormControl variant="outlined" fullWidth>
           <InputLabel htmlFor="outlined-adornment-search">Search Address Code, Name</InputLabel>
           <OutlinedInput
             id="outlined-adornment-search"
             type='text' 
-           
+             onChange={(e)=>{handleSearch(e.target.value)}}
             endAdornment={
               <InputAdornment position="end">
                 
-           <icon/>
+            <ManageSearchIcon/>
               </InputAdornment>
             }
             label="Search Address Code, Name"
@@ -201,7 +160,7 @@ const Address = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {dummyData.map((row) => (
+              {filteredData.map((row) => (
                 <TableRow
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -220,6 +179,15 @@ const Address = () => {
               ))}
             </TableBody>
           </Table>
+          <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={dummyData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
         </TableContainer>
       </Box>
       <Box>

@@ -1,0 +1,82 @@
+[
+    {
+      "address_code": "abc",
+     "name": "Sakshi",
+      "address_1": "123,West",
+      "city": "Pune",
+      "country": "India",
+      "email": "soni@mail.com"
+    },
+    {
+      "address_code": "bcd",
+     "name": "Guddu",
+      "address_1": "123,East",
+      "city": "Nashik",
+      "country": "India",
+      "email": "p@mail.com"
+    },
+    {
+      "address_code": "def",
+     "name": "Guddi",
+      "address_1": "123,North",
+      "city": "Bhusawal",
+      "country": "India",
+      "email": "guddi@mail.com"
+    },
+    {
+      "address_code": "efg",
+     "name": "Gaurav",
+      "address_1": "123,South",
+      "city": "Bihar",
+      "country": "India",
+      "email": "gaurav@mail.com"
+    },
+    {
+      "address_code": "ghi",
+     "name": "Ashwini",
+      "address_1": "123,NorthEast",
+      "city": "Gondia",
+      "country": "India",
+      "email": "ash@mail.com"
+    },
+    {
+      "address_code": "ijk",
+     "name": "Sneha",
+      "address_1": "123,NorthWest",
+      "city": "Nashik",
+      "country": "India",
+      "email": "sneha@mail.com"
+    },
+    {
+      "address_code": "klm",
+     "name": "Aastha",
+      "address_1": "123,SouthEast",
+      "city": "Indore",
+      "country": "India",
+      "email": "aastha@mail.com"
+    },
+    {
+      "address_code": "mno",
+     "name": "Kalpita",
+      "address_1": "234,North",
+      "city": "Goa",
+      "country": "India",
+      "email": "kalpita@mail.com"
+    },
+    {
+      "address_code": "opq",
+     "name": "Ravi",
+      "address_1": "234,East",
+      "city": "Solapur",
+      "country": "India",
+      "email": "ravi@mail.com"
+    },
+    {
+      "address_code": "qrs",
+     "name": "Pradyumann",
+      "address_1": "234,West",
+      "city": "Nashik",
+      "country": "India",
+      "email": "prady@mail.com"
+    }
+]
