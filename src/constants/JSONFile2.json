@@ -1,0 +1,83 @@
+[
+    {
+        "address_code": "abc",
+       "name": "Sakshi",
+        "address_1": "123,West",
+        "city": "Pune",
+        "country": "India",
+        "email": "soni@mail.com"
+      },
+    {
+        "address_code": "xyz",
+        "name": "Ananya",
+        "address_1": "456, South",
+        "city": "Mumbai",
+        "country": "India",
+        "email": "ananya@mail.com"
+    },
+    {
+        "address_code": "pqr",
+        "name": "Rahul",
+        "address_1": "789, East",
+        "city": "Delhi",
+        "country": "India",
+        "email": "rahul@mail.com"
+    },
+    {
+        "address_code": "stu",
+        "name": "Kritika",
+        "address_1": "567, North",
+        "city": "Chennai",
+        "country": "India",
+        "email": "kritika@mail.com"
+    },
+    {
+        "address_code": "vwx",
+        "name": "Vivek",
+        "address_1": "678, West",
+        "city": "Kolkata",
+        "country": "India",
+        "email": "vivek@mail.com"
+    },
+    {
+        "address_code": "yza",
+        "name": "Shreya",
+        "address_1": "890, Central",
+        "city": "Bangalore",
+        "country": "India",
+        "email": "shreya@mail.com"
+    },
+    
+    {
+        "address_code": "bcd",
+        "name": "Guddu",
+        "address_1": "123,East",
+        "city": "Nashik",
+        "country": "India",
+        "email": "p@mail.com"
+    },
+    {
+        "address_code": "nmo",
+       "name": "Puddu",
+        "address_1": "123,East",
+        "city": "Nashik",
+        "country": "India",
+        "email": "p@mail.com"
+      },
+      {
+        "address_code": "def",
+       "name": "Guddi",
+        "address_1": "123,North",
+        "city": "Bhusawal",
+        "country": "India",
+        "email": "guddi@mail.com"
+      },
+      {
+        "address_code": "efg",
+       "name": "Gaurav",
+        "address_1": "123,South",
+        "city": "Bihar",
+        "country": "India",
+        "email": "gaurav@mail.com"
+      }
+]
